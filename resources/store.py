@@ -25,7 +25,6 @@ class Store(Resource):
 		if store is None:
 			return {"Message" : "Store does not exists"}, 401
 		try:
-			store = StoreModel(name)
 			store.delete_from_db()
 		except:
 			return {"Message" : "Internal Server Error"}, 500
