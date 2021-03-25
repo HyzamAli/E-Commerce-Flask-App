@@ -5,7 +5,6 @@ from security import authenticate, identity
 from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
-from db import db
 
 app = Flask(__name__)
 app.secret_key = "blahblah"
@@ -20,10 +19,7 @@ api.add_resource(Item, "/item/<string:name>")
 api.add_resource(ItemList,"/items")
 api.add_resource(UserRegister,"/register")
 
-@app.before_first_request
-def create_Tables():
-	db.create_all()
-
 if __name__ == "__main__":
+	from db import db
 	db.init_app(app)
 	app.run(port = "5000", debug = True)
