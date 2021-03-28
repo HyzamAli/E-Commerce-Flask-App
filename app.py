@@ -11,8 +11,7 @@ from resources.store import Store, StoreList
 
 app = Flask(__name__)
 app.secret_key = "blahblah"
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
-print(os.environ.get("DATABASE_URL", "sqlite:///data.db"))
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db" #os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 api = Api(app)
 jwt = JWT(app, authenticate, identity)
